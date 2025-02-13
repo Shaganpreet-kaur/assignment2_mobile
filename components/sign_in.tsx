@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 import credentials from '../credentials.json';
-import { Screen } from '../components/type'; // 🔹 Import the Screen type from type.ts
+import { Screen } from '../components/type';
 
 type Props = { 
   push: (screen: Screen) => void;
-  setSignedIn: (value: boolean) => void; // 🔹 Added setSignedIn as prop
+  setSignedIn: (value: boolean) => void;
 };
 
 const SignIn: React.FC<Props> = ({ push, setSignedIn }) => {
@@ -38,7 +38,7 @@ const SignIn: React.FC<Props> = ({ push, setSignedIn }) => {
     setSignedIn(true);
 
     
-    push('WelcomePage'); // 🔹 Navigate to WelcomePage
+    push('WelcomePage');
   };
 
   return (
