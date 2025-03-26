@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Button, StyleSheet, Image } from 'react-native';
 import { Screen, CityName } from '../components/type'; // Import the types from type.ts
 
-type Props = { push: (screen: Screen, city?: CityName) => void }; // Update the type to use Screen and CityName
+type Props = { push: (screen: Screen, city?: CityName) => void }; 
 
 const WelcomePage: React.FC<Props> = ({ push }) => {
   return (
