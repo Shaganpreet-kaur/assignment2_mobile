@@ -15,7 +15,6 @@ export default function LandingPage() {
   const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
-    // Check current session when component mounts
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       if (!session) {
@@ -25,11 +24,12 @@ export default function LandingPage() {
       }
     });
 
-    // Listen for auth state changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
       if (!session) {
         router.replace('/sign-in');
+      } else if (session && !userDetails) {
+        fetchUserDetails(session.user.id);
       }
     });
 
@@ -69,11 +69,16 @@ export default function LandingPage() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome !</Text>
+      <Text style={styles.title}>
+        Welcome {userDetails ? `${userDetails.first_name} ${userDetails.last_name}` : ''}!
+      </Text>
       
       <View style={styles.detailsContainer}>
         <Text style={styles.detailText}>
-          <Text style={styles.label}>Email:</Text> {session?.user?.email || userDetails?.email}
+          <Text style={styles.label}>Full Name:</Text> {userDetails ? `${userDetails.first_name} ${userDetails.last_name}` : ''}
+        </Text>
+        <Text style={styles.detailText}>
+          <Text style={styles.label}>Email:</Text> {userDetails?.email || session?.user?.email}
         </Text>
         <Text style={styles.detailText}>
           <Text style={styles.label}>User ID:</Text> {session?.user?.id}
