@@ -34,7 +34,6 @@ const CityScreen: React.FC<Props> = ({ city, push }) => {
     setSelectedCity(city);
   };
 
-  // Open the city page in the browser
   const openCityPage = (city: CityName) => {
     Linking.openURL(cityData[city].link).catch((err) =>
       console.error("Error opening URL: ", err)

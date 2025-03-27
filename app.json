@@ -4,11 +4,11 @@
     "slug": "assignment2_mobile",
     "version": "1.0.0",
     "orientation": "portrait",
-    "plugins":[[
-      
+    "plugins": [
+      [
         "expo-router"
-         
-    ]],
+      ]
+    ],
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
@@ -18,7 +18,8 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.assignment2-mobile"
     },
     "android": {
       "adaptiveIcon": {
